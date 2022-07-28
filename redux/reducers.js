@@ -24,6 +24,7 @@ export const counterSlice = createSlice({
       state.input = '0';
       state.operator = null;
       state.previousInput = null;
+      state.previousOp = null;
     },
     setOperator: (state, action) => {
       state.operator = action.payload;
@@ -50,21 +51,15 @@ export const counterSlice = createSlice({
       } else if (state.previousInput !== null && state.previousOp !== null) {
         switch (state.previousOp) {
           case '+':
-            state.lastInput = state.input.split('+');
             state.previousInput =
-              Number(state.previousInput) +
-              Number(state.lastInput[state.lastInput.length - 1]);
+              Number(state.previousInput) + Number(state.input);
             state.previousOp = state.operator;
             state.operator = null;
             state.input = '';
             break;
           case '-':
-            state.lastInput = state.input.split('-');
             state.previousInput =
-              Number(state.previousInput) -
-              Number(state.lastInput[state.lastInput.length - 1]);
-            console.log('1: ' + state.lastInput[state.lastInput.length - 1]);
-            console.log(state.previousInput);
+              Number(state.previousInput) - Number(state.input);
             state.previousOp = state.operator;
             state.operator = null;
             state.input = '';

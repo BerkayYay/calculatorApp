@@ -5,6 +5,7 @@ import {useSelector} from 'react-redux';
 
 function SumArea() {
   const input = useSelector(state => state.counter.input);
+  const operator = useSelector(state => state.counter.previousOp);
   const previousInput = useSelector(state => state.counter.previousInput);
   return (
     <View style={sumAreaStyle.container}>
@@ -13,6 +14,7 @@ function SumArea() {
       </View>
       <View style={sumAreaStyle.sumArea}>
         <Text style={sumAreaStyle.sumText}>{input}</Text>
+        <Text style={sumAreaStyle.operatorText}>{operator}</Text>
       </View>
     </View>
   );

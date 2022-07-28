@@ -13,7 +13,7 @@ export default StyleSheet.create({
     height: 70,
   },
   sumText: {
-    fontSize: 50,
+    fontSize: 45,
     fontWeight: 'bold',
     padding: 10,
     position: 'absolute',
@@ -25,5 +25,12 @@ export default StyleSheet.create({
     backgroundColor: '#566471',
     height: 70,
     marginTop: 20,
+  },
+  operatorText: {
+    fontSize: 30,
+    fontWeight: 'bold',
+    position: 'absolute',
+    top: 0,
+    right: 5,
   },
 });
