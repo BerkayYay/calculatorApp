@@ -1,9 +1,16 @@
 import {StyleSheet} from 'react-native';
 
 export default StyleSheet.create({
-  sumArea: {
+  container: {
+    flex: 1,
+    flexDirection: 'column',
+    justifyContent: 'center',
     backgroundColor: '#999',
-    height: 300,
+  },
+  sumArea: {
+    flex: 1,
+    backgroundColor: '#999',
+    height: 70,
   },
   sumText: {
     fontSize: 50,
@@ -12,5 +19,11 @@ export default StyleSheet.create({
     position: 'absolute',
     bottom: 0,
     right: 0,
+  },
+  prevInput: {
+    flex: 3,
+    backgroundColor: '#566471',
+    height: 70,
+    marginTop: 20,
   },
 });

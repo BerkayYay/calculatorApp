@@ -1,42 +1,119 @@
 import React from 'react';
 import {View, Text, TouchableOpacity} from 'react-native';
 import {StyleSheet} from 'react-native';
+import {useDispatch} from 'react-redux';
+import {setInput, clear, setOperator} from '../../redux/reducers';
+import Button from './button';
 
-function buttons({bt1, bt2, bt3, bt4}) {
-  return (
-    <View style={styles.buttonContainer}>
-      <TouchableOpacity style={styles.button}>
-        <Text style={styles.buttonText}>{bt1}</Text>
-      </TouchableOpacity>
-      <TouchableOpacity style={styles.button}>
-        <Text style={styles.buttonText}>{bt2}</Text>
-      </TouchableOpacity>
-      <TouchableOpacity style={styles.button}>
-        <Text style={styles.buttonText}>{bt3}</Text>
-      </TouchableOpacity>
-      <TouchableOpacity style={styles.button2}>
-        <Text style={styles.buttonText}>{bt4}</Text>
-      </TouchableOpacity>
-    </View>
-  );
-}
 export default function CalculatorButtons() {
+  const dispatch = useDispatch();
   return (
     <View style={styles.container}>
-      {buttons({bt1: 'C', bt2: '%', bt3: '+/-', bt4: '/'})}
-      {buttons({bt1: '7', bt2: '8', bt3: '9', bt4: '*'})}
-      {buttons({bt1: '4', bt2: '5', bt3: '6', bt4: '-'})}
-      {buttons({bt1: '1', bt2: '2', bt3: '3', bt4: '+'})}
       <View style={styles.buttonContainer}>
-        <TouchableOpacity style={styles.zeroButton}>
-          <Text style={styles.buttonText}>0</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.button}>
-          <Text style={styles.buttonText}>.</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.button2}>
-          <Text style={styles.buttonText}>=</Text>
-        </TouchableOpacity>
+        <Button
+          onPress={() => dispatch(clear())}
+          text="C"
+          theme={'secondary'}
+        />
+        <Button
+          onPress={() => dispatch(setInput('8'))}
+          text="+/-"
+          theme={'secondary'}
+        />
+        <Button
+          onPress={() => dispatch(setInput('9'))}
+          text="%"
+          theme={'secondary'}
+        />
+        <Button
+          onPress={() => dispatch(setInput('X'))}
+          text="/"
+          theme={'accent'}
+        />
+      </View>
+      <View style={styles.buttonContainer}>
+        <Button
+          onPress={() => dispatch(setInput('7'))}
+          text="7"
+          theme={'secondary'}
+        />
+        <Button
+          onPress={() => dispatch(setInput('8'))}
+          text="8"
+          theme={'secondary'}
+        />
+        <Button
+          onPress={() => dispatch(setInput('9'))}
+          text="9"
+          theme={'secondary'}
+        />
+        <Button
+          onPress={() => dispatch(setInput('X'))}
+          text="X"
+          theme={'accent'}
+        />
+      </View>
+      <View style={styles.buttonContainer}>
+        <Button
+          onPress={() => dispatch(setInput('4'))}
+          text="4"
+          theme={'secondary'}
+        />
+        <Button
+          onPress={() => dispatch(setInput('5'))}
+          text="5"
+          theme={'secondary'}
+        />
+        <Button
+          onPress={() => dispatch(setInput('6'))}
+          text="6"
+          theme={'secondary'}
+        />
+        <Button
+          onPress={() => dispatch(setOperator('-'))}
+          text="-"
+          theme={'accent'}
+        />
+      </View>
+      <View style={styles.buttonContainer}>
+        <Button
+          onPress={() => dispatch(setInput('1'))}
+          text="1"
+          theme={'secondary'}
+        />
+        <Button
+          onPress={() => dispatch(setInput('2'))}
+          text="2"
+          theme={'secondary'}
+        />
+        <Button
+          onPress={() => dispatch(setInput('3'))}
+          text="3"
+          theme={'secondary'}
+        />
+        <Button
+          onPress={() => dispatch(setOperator('+'))}
+          text="+"
+          theme={'accent'}
+        />
+      </View>
+      <View style={styles.buttonContainer}>
+        <Button
+          onPress={() => dispatch(setInput('0'))}
+          text="0"
+          theme={'secondary'}
+          size={'double'}
+        />
+        <Button
+          onPress={() => dispatch(setInput('.'))}
+          text="."
+          theme={'secondary'}
+        />
+        <Button
+          onPress={() => dispatch(setInput('='))}
+          text="="
+          theme={'accent'}
+        />
       </View>
     </View>
   );
@@ -55,41 +132,5 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-around',
     alignItems: 'center',
-  },
-  button: {
-    backgroundColor: '#A6A6A6',
-    width: 75,
-    height: 75,
-    padding: 10,
-    margin: 10,
-    borderRadius: 35,
-    borderWidth: 1,
-    borderColor: '#A6A6A6',
-  },
-  button2: {
-    backgroundColor: '#F09A36',
-    width: 75,
-    height: 75,
-    padding: 10,
-    margin: 10,
-    borderRadius: 35,
-    borderWidth: 1,
-    borderColor: '#F09A36',
-  },
-  buttonText: {
-    fontSize: 25,
-    color: '#202020',
-    textAlign: 'center',
-    paddingTop: 10,
-  },
-  zeroButton: {
-    backgroundColor: '#A6A6A6',
-    width: 175,
-    height: 75,
-    padding: 10,
-    margin: 10,
-    borderRadius: 35,
-    borderWidth: 1,
-    borderColor: '#A6A6A6',
   },
 });
