@@ -26,7 +26,7 @@ export default function CalculatorButtons() {
           theme={'secondary'}
         />
         <Button
-          onPress={() => dispatch(setInput('X'))}
+          onPress={() => dispatch(setOperator('/'))}
           text="/"
           theme={'accent'}
         />
@@ -48,8 +48,8 @@ export default function CalculatorButtons() {
           theme={'secondary'}
         />
         <Button
-          onPress={() => dispatch(setInput('X'))}
-          text="X"
+          onPress={() => dispatch(setOperator('x'))}
+          text="x"
           theme={'accent'}
         />
       </View>
@@ -110,7 +110,7 @@ export default function CalculatorButtons() {
           theme={'secondary'}
         />
         <Button
-          onPress={() => dispatch(setInput('='))}
+          onPress={() => dispatch(setOperator('='))}
           text="="
           theme={'accent'}
         />
