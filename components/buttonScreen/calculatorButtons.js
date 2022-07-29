@@ -21,7 +21,7 @@ export default function CalculatorButtons() {
           theme={'secondary'}
         />
         <Button
-          onPress={() => dispatch(setInput('9'))}
+          onPress={() => dispatch(setOperator('%'))}
           text="%"
           theme={'secondary'}
         />

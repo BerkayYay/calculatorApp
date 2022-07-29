@@ -64,9 +64,10 @@ export const counterSlice = createSlice({
           case '+/-':
             state.input = Number(state.input) * -1;
             break;
+
           default:
             state.previousInput = state.input;
-            state.input = 'default';
+            state.input = 'Error!';
             state.operator = null;
             break;
         }
@@ -109,7 +110,7 @@ export const counterSlice = createSlice({
             break;
 
           default:
-            state.input = 'default';
+            state.input = 'Error!';
             state.operator = null;
             break;
         }
@@ -142,7 +143,7 @@ export const counterSlice = createSlice({
 
           default:
             state.previousInput = state.input;
-            state.input = 'defaultaaa';
+            state.input = 'Error!';
             state.operator = null;
             break;
         }
