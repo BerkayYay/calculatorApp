@@ -2,7 +2,7 @@ import React from 'react';
 import {View, Text, TouchableOpacity} from 'react-native';
 import {StyleSheet} from 'react-native';
 import {useDispatch} from 'react-redux';
-import {setInput, clear, setOperator} from '../../redux/reducers';
+import {setInput, clear, setOperator, handleEqual} from '../../redux/reducers';
 import Button from './button';
 
 export default function CalculatorButtons() {
@@ -16,7 +16,7 @@ export default function CalculatorButtons() {
           theme={'secondary'}
         />
         <Button
-          onPress={() => dispatch(setInput('8'))}
+          onPress={() => dispatch(setOperator('+/-'))}
           text="+/-"
           theme={'secondary'}
         />
@@ -110,7 +110,7 @@ export default function CalculatorButtons() {
           theme={'secondary'}
         />
         <Button
-          onPress={() => dispatch(setOperator('='))}
+          onPress={() => dispatch(handleEqual('='))}
           text="="
           theme={'accent'}
         />

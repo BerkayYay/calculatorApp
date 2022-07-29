@@ -61,6 +61,9 @@ export const counterSlice = createSlice({
             state.input = '= ' + state.input;
             state.operator = null;
             break;
+          case '+/-':
+            state.input = Number(state.input) * -1;
+            break;
           default:
             state.previousInput = state.input;
             state.input = 'default';
@@ -73,7 +76,7 @@ export const counterSlice = createSlice({
 
         state.previousInput !== null &&
         state.previousOp !== null &&
-        state.input == ''
+        state.input !== ''
       ) {
         switch (state.previousOp) {
           case '+':
@@ -132,12 +135,11 @@ export const counterSlice = createSlice({
             state.previousOp = '/';
             state.operator = null;
             break;
-          case '=':
-            // Still there is problems here. I will fix this problem later.
-            if (state.previousOp === '+') {
-              state.input =
-                '=' + (Number(state.previousInput) + Number(state.input));
-            }
+          case '+/-':
+            state.input = Number(state.input) * -1;
+            state.operator = null;
+            break;
+
           default:
             state.previousInput = state.input;
             state.input = 'defaultaaa';
@@ -146,9 +148,45 @@ export const counterSlice = createSlice({
         }
       }
     },
+    handleEqual: (state, action) => {
+      switch (state.previousOp) {
+        case '+':
+          state.previousOp = state.operator;
+          state.operator = null;
+          state.input =
+            '=' + (Number(state.previousInput) + Number(state.input));
+          state.previousInput = null;
+          break;
+        case '-':
+          state.previousOp = state.operator;
+          state.operator = null;
+          state.input =
+            '=' + (Number(state.previousInput) - Number(state.input));
+          state.previousInput = null;
+          break;
+        case 'x':
+          state.previousOp = state.operator;
+          state.operator = null;
+          state.input = '=' + Number(state.previousInput) * Number(state.input);
+          state.previousInput = null;
+          break;
+        case '/':
+          state.previousOp = state.operator;
+          state.operator = null;
+          state.input = '=' + Number(state.previousInput) / Number(state.input);
+          state.previousInput = null;
+          break;
+        default:
+          state.previousInput = null;
+          state.previousOp = null;
+          state.input = '0';
+          state.operator = null;
+          break;
+      }
+    },
   },
 });
 
-export const {setInput, clear, setOperator} = counterSlice.actions;
+export const {setInput, clear, setOperator, handleEqual} = counterSlice.actions;
 
 export default counterSlice.reducer;
